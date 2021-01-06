@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+
+
+
+<!-- -----------------------------------------------------------myhome -->
+<div class="container_header">
+    <h1>ARTiZEN</h1>
+
+    <p>Connect to art and craffter arround you</p>
+
+</div>
+
+<div class="home_body">
+
+    <div class="home_search">
+        <div class="mt-4 ml-4 search_bar">
+            <form action="{% url 'search_results' %}" method="get" id="searchArtistForm">
+                {% csrf_token %}
+                <div class="form_input"> 
+                    {{ form  | crispy }} 
+                </div>
+               
+
+                <div class="form_button">
+                    <button class="btn btn-warning">Search</button>
+                </div>
+                
+            </form>
+        </div>
+    <!-- </div> -->
+</div>
+
+<hr>
+
+<div class="grid-container">
+
+    {% for item in products %}
+    <div class="grid-item home_display">
+        <div class="card">
+            <img class="card-img-top" src="{{ item.itemImage_or_default }}" alt="{{ items.title }}" }>
+
+            <h5 class="card-title"><a href="{{ item.get_absolut_url }}"></a></h5>
+            <p class="card-text">{{ item.title }} </p>
+            <a href="{% url 'view_item' item.pk %}" class="btn btn-primary">View Item</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+
+
+</div>
+<div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ---------------javascript for city dropdown -->
+
+
+<script>
+    const country_select = document.getElementById('id_country')
+    const csrftoken = getCookie('csrftoken');
+
+    var change_event = new Event('change') 
+    
+
+    country_select.addEventListener('change', (event) => {
+        const country_id = event.target.value
+        const url = '{% url "load_cities" %}'
+        fetch(url, {
+                method: "post",
+                headers: {
+                    "X-CSRFToken": csrftoken,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "country_id": country_id
+                }),
+            })
+            .then((response) => {
+                return response.json()
+            })
+
+            .then((data) => (builds_dropdown(data)))
+    })
+    
+    window.onload = (e) => {
+        country_select.dispatchEvent(change_event)
+    } 
+
+
+
+    function builds_dropdown(data) {
+
+        const city_select = document.getElementById('id_city')
+        city_select.innerHTML = "";
+
+        for (item of data) {
+            option = document.createElement("option");
+            option.text = item[1];
+            option.value = item[0];
+            city_select.appendChild(option);
+        }
+    }
+
+
+
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+
+
+
+    // step1 event listener on the dropdown onchange-event 
+    // step2 when event is triggered we want to select the country
+    // step3 we ll send country (data) to server via ajax 
+    // step4 the server will select the cities and send them back to the html
+    // step5   use DOM manip to stick into the city dropdowsn 
+
+
+    // in the fetch we need the url 
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+<div class="basic_profile_container">
+    <div class="artist_basic_profile">
+
+        <div class="profile_header_basic">
+            <div>
+                <img class="profile_picture" src="{{ profile.profilepic_or_default }}" alt="">
+                <h3>{{ profile.user.first_name}} {{ profile.user.last_name}}</h3>
+            </div>
+            <div>
+                <p>From: {{profile.city}}, {{profile.country}}</p>
+            </div>
+
+        </div>
+
+        <div class="details_contact">
+            <div class="bio_profile">
+
+                <h3>About the Artist</h3>
+                <p>{{ profile.bio }}</p>
+            </div>
+
+            <div class="artist_info">
+                <div>
+                    <h5>Website </h5>
+                    <p><a href="">{{profile.website}}</a> </p>
+                </div>
+
+                <div>
+                    <h5>Visites Details</h5>
+                    {% if profile.visites == True %}
+                    <p>Can be visited at Studio</p>
+                    {% else %}
+                    <p>Artsit doesn't accepts Visites at the Moment</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="artist_items">
+            <div class="titel_page_profile">
+                <h4>Other Items from {{ artist.first_name}}</h4>
+            </div>
+       
+            <div class="carousell_item">
+                {% for item in items %}
+                
+                <div class="card">
+                    <img class="card-img-top" src="{{ item.itemImage_or_default }}" alt="{{ item.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{ item.get_absolut_url }}"></a></h5>
+                      <p class="card-text">{{ item.title }} </p>
+                      <a href="{% url 'view_item' item.pk %}" class="btn btn-primary">View Item</a>
+                      
+                    </div>
+                  </div>
+                {% endfor %}
+            
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

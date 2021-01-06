@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/message.css' %}">
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+
+
+<div class="from">
+   <p>From  {{message.profile.first_name}} </p>
+</div>
+
+<div class="subject">
+   <p> Subject: {{ message.subject}}</p>
+</div>
+
+<div class="message">
+   <p> {{message.text}}</p>
+</div>
+
+
+
+
+{% endblock %}

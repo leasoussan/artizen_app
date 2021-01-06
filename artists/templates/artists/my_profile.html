@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<div class="basic_profile_container">
+  <div class="artist_basic_profile">
+
+    <div class="profile_header_basic">
+      <div>
+        <img class="profile_img" src="{{ user.profile.profile_pic.url }}" width="100px">
+      </div>
+      <div class="col-sm-4">
+        <h3>Welcome {{user.first_name}}!</h3>
+      </div>
+
+
+      <div class="pull-right">
+        <ul><a href="{% url 'edit_profile' request.user.profile.id %}"><i class="fa fa-user"></i> Edit Profile</a></ul>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="details_contact">
+
+      <div class="profile_details">
+        <div>
+          <h3>{{user.first_name}} {{user.last_name}} </h3>
+          <p>Current Location : {{user.profile.city}}, {{user.profile.country}} </p>
+          {% for category in categories %}
+          <p>{{user.profile.category }}</p>
+          {% endfor %}
+        </div>
+
+        <div>
+          <h4>Contact info</h4>
+          <p>Email : {{user.email}} </p>
+          <p>Phone Number : {{user.profile.phone_number}}</p>
+          {% if visites %}
+          <p>Accepting Visites</p>
+          {% else %}
+          <p>You are not accepting visites at the moment</p>
+          {% endif %}
+        </div>
+
+
+
+      </div>
+      <div>
+        <h4>Bio:</h4>
+        <p>{{user.profile.bio}}</p>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

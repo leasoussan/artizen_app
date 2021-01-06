@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Detail of item {{item.id}}  </h1>
+<table>
+    <tr>
+    <th>ID</th>
+    <th>Title</th> 
+    <th>Description</th>
+    <th>Category</th>
+    <th>Image</th>
+    <th>price</th>
+    <th>Edit/Delete</th>
+    </tr>
+
+    <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.category}}</td>
+        <td><img class= "item_img" src="{{ item.image.url }}" alt="{{item.title }}"></td>
+        <td>{{item.price}}</td>
+        
+    </tr>
+</table>
+
+
+
+{% endblock %}
+    

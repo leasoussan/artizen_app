@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/board_panel.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container_manager ">
+
+    <div>
+
+        <h3>Manage your Items -Dashboard</h3>
+
+    </div>
+    <div>
+        <div class="panel_naviagation">
+            <a class="btn btn"href="{% url 'add_item' %}">Add Item </a>
+        </div>
+    
+      
+        {% if object_list %}
+        <div class="item_manager">
+
+            <table class="table table-sm">
+
+                <thead>
+                    <tr class="row_manager">
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Category</th>
+                        <th scope="col-2">Image</th>
+                        <th scope="col">price</th>
+                        <th scope="col">Edit/Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in object_list %}
+                    <tr class="table_row">
+                        <td><a href="{% url 'view_item' item.id %}">{{item.id}}</a></td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.description|slice:":30" }}</td>
+                        <td>{{item.category}}</td>
+                        <td>{% if image is not 0   %}
+                            <p>Available Image</p>
+                            {% else %}
+                            <p>Not uploaded yet</p>
+                            {% endif %}
+                        </td>
+                        <td>{{item.price}}</td>
+                        <td><a href="{% url 'edit_item' item.id %}">Edit item </a>/<a
+                                href="{% url 'delete_item'  item.id %}">Delete item </a></td>
+
+                    </tr>
+                    {% endfor %}     
+                </tbody>
+               
+
+
+
+            </table>
+        </div>
+    </div>
+</div>
+
+        {% endif %}
+
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+
+</div>

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h1>Delete Item</h1>
+
+<form action="" method="post">
+{% csrf_token %}
+
+<h2>Please confirm that you would like to delete the Item Bellow</h2>
+
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.image}}</td>
+        <td>{{item.price}}</td>
+
+<input type="submit" value="Confirm">
+
+</form>
+
+
+{% endblock %}
+    

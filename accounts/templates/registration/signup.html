@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="col-sm-4">
+    <div class="signup-form"><!--sign up form-->
+        <h2>New User Signup!</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            
+            {{ form|crispy }}
+            
+            <input type="checkbox" id="artistProfile" name="artistProfile" value="artist_profile">
+            <label for="artistProfile"> Artist/Seller Profile</label><br>
+            <input type="checkbox" id="vehicle2" name="basicProfile" value="basic_profile">
+            <label for="basicProfile"> Basic User Profile</label><br>
+
+            <button type= "submit">Signup</button>
+            </form>
+    </div><!--/sign up form-->
+</div>
+
+
+{% endblock %}

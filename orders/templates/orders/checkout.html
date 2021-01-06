@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/items.css' %}">
+{% endblock %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<h2>Payment Info </h2>
+
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    {{form|crispy}}
+
+<button style="submit">Confirm </button>
+</form>
+
+</div>
+        
+{% endblock %}
+
+

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/board_panel.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container_manager">
+
+
+    <div>
+        <h3>Messsages Inbox</h3>
+    </div>
+
+    <div class="panel_naviagation">
+        <a class="btn " href="{% url 'outbox_messages_panel' %}">Sent Messages</a>
+        <a class="btn "  href="{% url 'new_message' %}">New Message</a>
+    </div>
+
+
+
+    <div>
+
+        {% if not messages_list %}
+        <h2>No Messages to display yet...</h2>
+        {% else %}
+
+        <div class="item_manager">
+            <table class="table table-sm">
+                <thead>
+                    <tr class="row_manager">
+                        <th scope="col">From </th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Message</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for message in messages_list %}
+                    <tr>
+                        <td><a href="#">{{message.sender.user.first_name}}{{message.email}}</a></td>
+                        <td>{{message.date}}</td>
+                        <td><a href="{% url 'message' message.id %}">{{message.subject}}</a></td>
+                        <td>{{message.text}}</td>
+
+                        <td><a href="{% url 'send_message' message.id %}">Replay Message</a>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+
+
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+<link rel="stylesheet" href="{% static 'css/items.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+
+    <div class="item_body">
+
+
+        <div><img class="item_img" src="{{ item.itemImage_or_default }}" alt="{{item.title }}"></div>
+
+
+        <div class="item_page">
+
+            <h3>{{item.title}}</h3>
+            <p>Price: {{item.price}}</p>
+            <p>Available Quantity: </p>
+            {% if item.quantity == 1 %}
+            <p>One item Left </p>
+            {% else %}
+            <ul>{{item.quantity}}</ul>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="action_buttons">
+        <div>
+            <a class="btn btn-primary" href="{% url 'guest_message_to_artist' item.artist.pk %}">Contact The Artist</a>
+
+            <a class="btn btn-primary" href="{% url 'artist_profile_page' item.artist.pk %}">About The Artist</a>
+
+        </div>
+
+        <div>
+            <a href="{% url 'confirm_order_item' item.pk %}" class="btn btn-primary">Order This Item</a>
+        </div>
+        
+    </div>
+</div>
+
+</div>
+
+</div>
+{% endblock %}

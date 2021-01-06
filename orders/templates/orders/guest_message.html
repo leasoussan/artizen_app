@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/message.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="gues_message_container">
+
+    <div class="message_form">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="email">
+                <label for="email">Email for confirmation </label>
+                <input type="email" name="email" id="guest_email"
+                    placeholder="Please enter your email to get confirmation">
+            </div>
+
+            <div class="subject">
+                <label for="subject">Subject</label>
+                <input type="text" name="subject" id="guest_subject">
+            </div>
+
+            <div class="message">
+                <label for="text">Message </label>
+                <input type="text_box" name="text" id="guest_message_text">
+            </div>
+
+
+            <div>
+                <button type="submit">Send Message</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

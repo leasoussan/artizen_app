@@ -1,0 +1,139 @@
+.container_header {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+.home_search{
+    display: flex;
+    flex-direction: row;
+    border-color: solid 5px  tomato;
+    background-color: rgb(245, 237, 224) ;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 150px;
+  
+    justify-content: center;
+    justify-content: space-evenly;
+
+
+}
+
+
+
+form{
+    width: 90%;
+
+}
+
+
+
+.search_bar {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5rem;
+    width: 100%;
+    align-self: flex-end;
+  
+}
+  
+   
+
+.form_input{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.form_button{
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.home_search button{
+    margin-left: 30px;
+    height: 30px;
+    width: 100px;
+    align-self: flex-end;
+}
+
+
+
+form{
+    display: flex;
+    flex-direction: row;
+
+    margin: 0 0 15px;
+}
+
+
+.form-group{
+    width: 230px ;
+}
+
+hr {
+    width: 800px;
+}
+
+/* 
+}
+
+.row_namager{
+    height: 1rem;
+    width: auto;
+}
+
+th > image {
+    width: 10px;
+    background-color: brown;
+} */
+
+td .item_img{
+    width: 300px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 5px;
+}
+.grid-item {
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+.card {
+    width: 250px;
+    height: 300px;
+    margin: 20px;
+    
+}
+
+/* .home_display {
+    display: grid | inline-grid;
+    background-color: black;
+} */
+
+
+
+ul li{
+    color: black;
+}
+
+
+/* ---------------------results page */
+
+
+
+.search_results_header{
+    width: 100%;
+    height: 50%;
+}
