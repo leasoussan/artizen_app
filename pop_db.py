@@ -76,13 +76,13 @@ def pop_cities():
 
 
 
-category = ['Paint', 'Sculpture', 'Food', 'Home&Stuff', 'Fashion', 'Other']
+category_list = ['Paint', 'Sculpture', 'Food', 'Home&Stuff', 'Fashion', 'Other']
 
 def pop_category(category_list):
-    for category in category:
-        category = Category.objects.create(category=category)
+    for cat in category:
+        cat = Category.objects.create(category=cat)
     
-    print(f"the category {category} was created")
+        print(f"the category {category} was created")
 
 
 
