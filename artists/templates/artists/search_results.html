@@ -12,38 +12,42 @@
 
 {% block content %}
 
-<div class="container search_results_header">
+<div>
+  <div class="container search_results_header">
 
-  <a class="btn" href="{% url 'home_page' %}">HOME</a>
+    <a class="btn btn-primary" href="{% url 'home_page' %}">Back to Home Page</a>
+  </div>
 
+  <div>
+    {% if not results_list %}
 
+    <h5>Sorry Nothin here yet, try another city</h5>
+  
 
-  {% if not results_list %}
+  
 
-  <h5>Sorry Nothin here yet, try another city</h5>
-</div>
+  </div>
+
   {% else %}
 
+  <div class="grid-container">
 
-<div class="grid-container">
 
+    {% for item in results_list %}
 
-  {% for item in results_list %}
-  
-  <div class="grid-item home_display">
+    <div class="grid-item home_display">
       <div class="card">
-          <img class="card-img-top" src="{{ item.itemImage_or_default }}" alt="{{ items.title }}" }>
+        <img class="card-img-top" src="{{ item.itemImage_or_default }}" alt="{{ items.title }}" }>
 
-          <h5 class="card-title"><a href="{{ item.get_absolut_url }}"></a></h5>
-          <p class="card-text">{{ item.title }} </p>
-          <a href="{% url 'view_item' item.pk %}" class="btn btn-primary">View Item</a>
+        <h5 class="card-title"><a href="{{ item.get_absolut_url }}"></a></h5>
+        <p class="card-text">{{ item.title }} </p>
+        <a href="{% url 'view_item' item.pk %}" class="btn btn-primary">View Item</a>
       </div>
-  </div>
-  {% endfor %}
+    </div>
+    {% endfor %}
 
 
-{% endif %}
+    {% endif %}
 
-</div>
 
-{% endblock %}
+    {% endblock %}
