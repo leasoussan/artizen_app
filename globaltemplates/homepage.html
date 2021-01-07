@@ -48,7 +48,7 @@
     {% for item in products %}
     <div class="grid-item home_display">
         <div class="card">
-            <img class="card-img-top" src="{{ item.itemImage_or_default }}" alt="{{ items.title }}" }>
+            <img class="card-img-top" src="{{ item.itemImage_or_default }}" }>
 
             <h5 class="card-title"><a href="{{ item.get_absolut_url }}"></a></h5>
             <p class="card-text">{{ item.title }} </p>
