@@ -107,15 +107,9 @@ def pop_users(n):
             location = '',
             bio = "This is about me ....",
             profile_pic = 'media/profile/avatar.png',
-<<<<<<< HEAD
-            website = 'www.google.com',
-
-            user = user,
-=======
             website = 'www.google.com',  
                
             user = user,       
->>>>>>> 511c349ff14241c6957cbf754243398761400e68
             )
         profile.category.add(random.choice(Category.objects.all()))
 
